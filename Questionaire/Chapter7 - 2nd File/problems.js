@@ -91,6 +91,33 @@ function twitter(ttext){
 }
 
 
-function palindromes(){
+function palindromes(ptext){
+    var palCollection = {};
+    ptext.replace(/([A-Za-z]+)/gi, function(){
+        function reverse(revstr){
+            return revstr.split("").reverse().join("");
+        }
+        if(arguments[0].length < 2) return;
+        var test = reverse(arguments[0]) ;
+        if(arguments[0].toLowerCase() === test.toLowerCase())
+            palCollection[arguments[0]] = arguments[0];
+    });
 
+    for(var x in palCollection)
+        console.log(palCollection[x]);
+}
+
+
+function l33t(leetText){
+    var alphabet = ["4","8","<","|>","3",
+                    "|=","6","}-{","!","_|",
+                    "|<","|_","/|\\","|\\|","0",
+                    "|D","(,)","|?","$","7",
+                    "|_|","\\/","\\|/","><","'/","2"];
+    var result = leetText.replace(/[A-Za-z]/gi,function(){
+        var letter = arguments[0].toUpperCase().charCodeAt(0);
+        return alphabet[letter - 65];
+    });
+
+    return result;
 }
